@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap-css-only/css/bootstrap.css">
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="ngFun">
+	{{"hola".toUpperCase()}}
+	{{['s','w','e','e','t','n','e','s','s'].join('')}}
+
+	<div ng-controller="PokemonController">
+		<h1>Trainer: {{trainer.name}}</h1>
+		
+		<span>Enter your name:</span>
+    	<input ng-model="trainer.name"/>
+    	
+    	<pre>{{ pokemon | json }}</pre>
+    	<pre>{{ catchphrase.toUpperCase()}}</pre>
+		
+		<label>Search: <input ng-model="searchText"></label>
+		<table class="table table-striped" id="searchTextResults">
+			<thead>
+				<tr>
+					<th>Ndex</th><th>Name</th><th>Type</th><th>Nemesis</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="poke in pokemon | orderBy:'Ndex' | filter:searchText">
+					<td>{{poke.Ndex}}</th>
+					<td>{{poke.name}}</th>
+					<td>{{poke.type}}</th>
+					<td>{{poke.name | reverse}}
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
